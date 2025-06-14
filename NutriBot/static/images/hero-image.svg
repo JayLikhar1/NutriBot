@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="300" cy="200" r="180" fill="#f8f9fa" opacity="0.8"/>
+    
+    <!-- Brain Icon (representing AI) -->
+    <g transform="translate(200, 120) scale(0.8)">
+        <path d="M100,50 C130,50 150,70 150,100 C150,130 130,150 100,150 C70,150 50,130 50,100 C50,70 70,50 100,50" 
+              fill="none" stroke="#00b894" stroke-width="8"/>
+        <path d="M80,80 L120,80 M80,100 L120,100 M80,120 L120,120" 
+              stroke="#00b894" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Food Icons -->
+    <g transform="translate(320, 120)">
+        <!-- Apple -->
+        <path d="M30,0 C40,0 50,10 50,20 C50,30 40,40 30,40 C20,40 10,30 10,20 C10,10 20,0 30,0" 
+              fill="#ff6b6b"/>
+        <path d="M30,0 L30,-10" stroke="#ff6b6b" stroke-width="4"/>
+    </g>
+    
+    <g transform="translate(380, 160)">
+        <!-- Leaf -->
+        <path d="M0,0 C20,-20 40,-20 40,0 C40,20 20,40 0,40 C-20,40 -40,20 -40,0 C-40,-20 -20,-20 0,0" 
+              fill="#00b894"/>
+    </g>
+    
+    <g transform="translate(280, 200)">
+        <!-- Bowl -->
+        <path d="M-40,0 C-40,20 -20,40 0,40 C20,40 40,20 40,0" 
+              fill="none" stroke="#00b894" stroke-width="4"/>
+        <path d="M-30,0 L30,0" stroke="#00b894" stroke-width="4"/>
+    </g>
+    
+    <!-- Connection Lines -->
+    <g stroke="#00b894" stroke-width="2" stroke-dasharray="4,4">
+        <line x1="280" y1="160" x2="320" y2="140"/>
+        <line x1="320" y1="160" x2="380" y2="180"/>
+        <line x1="300" y1="200" x2="320" y2="180"/>
+    </g>
+    
+    <!-- Decorative Elements -->
+    <circle cx="150" cy="250" r="5" fill="#00b894"/>
+    <circle cx="450" cy="150" r="5" fill="#00b894"/>
+    <circle cx="400" cy="250" r="5" fill="#00b894"/>
+    <circle cx="200" cy="150" r="5" fill="#00b894"/>
+</svg> 

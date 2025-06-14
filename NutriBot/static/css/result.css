@@ -1,0 +1,544 @@
+/* Result Container */
+.result-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Result Header */
+.result-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.result-header h1 {
+    font-size: 2.8rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.result-header p {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+}
+
+/* User Profile Summary */
+.user-profile-summary {
+    margin-bottom: 3.5rem;
+    background: var(--bg-secondary);
+    border-radius: 18px;
+    padding: 2.5rem;
+    box-shadow: 0 6px 12px var(--shadow-color);
+    opacity: 1;
+}
+
+.user-profile-summary h2 {
+    color: var(--text-primary);
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.8rem;
+}
+
+.profile-item {
+    background: var(--bg-primary);
+    padding: 1.8rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 1;
+}
+
+.profile-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.profile-item i {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+    opacity: 1;
+}
+
+.profile-item:hover i {
+    transform: scale(1.1);
+}
+
+.profile-item h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.profile-item p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+    opacity: 1;
+}
+
+/* Animation classes */
+.profile-item.animate {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.profile-item.animate i,
+.profile-item.animate h3,
+.profile-item.animate p {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Summary Section */
+.summary-section {
+    margin-bottom: 3.5rem;
+}
+
+.summary-section h2 {
+    color: var(--text-primary);
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.8rem;
+}
+
+.summary-card {
+    background: var(--bg-secondary);
+    padding: 2.2rem;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 6px 12px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.summary-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.summary-card:hover i {
+    transform: scale(1.1);
+}
+
+.summary-card h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+}
+
+.summary-card .value {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
+
+.summary-card .label {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Explanation Section */
+.explanation-section {
+    margin-bottom: 3.5rem;
+    background: var(--bg-secondary);
+    border-radius: 18px;
+    padding: 2.5rem;
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.explanation-section h2 {
+    color: var(--text-primary);
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.explanation-content p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.explanation-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.explanation-content li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.explanation-content li i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+.explanation-content li strong {
+    color: var(--primary-color);
+}
+
+/* Meal Plan Section */
+.meal-plan-section {
+    margin-bottom: 3.5rem;
+}
+
+.meal-plan-section h2 {
+    color: var(--text-primary);
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.meal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.meal-card {
+    background: var(--bg-secondary);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.meal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.meal-card h3 {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.2rem;
+    margin: 0;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.meal-content {
+    padding: 1.8rem;
+}
+
+.meal-time {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+}
+
+.meal-option {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.meal-option:last-child {
+    margin-bottom: 0;
+}
+
+.meal-option h4 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+}
+
+.meal-nutrition {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem 1rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 1.2rem;
+}
+
+.meal-nutrition span {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.meal-nutrition i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.meal-ingredients {
+    padding-top: 0.8rem;
+}
+
+.meal-ingredients h5 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.meal-ingredients ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.meal-ingredients li {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.meal-ingredients li::before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Tips Section */
+.tips-section {
+    margin-bottom: 3.5rem;
+}
+
+.tips-section h2 {
+    color: var(--text-primary);
+    font-size: 2rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.8rem;
+}
+
+.tip-card {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 6px 12px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.tip-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.tip-card:hover i {
+    transform: scale(1.1);
+}
+
+.tip-card h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+}
+
+.tip-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 4rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.1rem 2.8rem;
+    font-size: 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    box-shadow: 0 6px 12px rgba(0, 184, 148, 0.4);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 184, 148, 0.5);
+}
+
+.btn-primary:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 184, 148, 0.3);
+}
+
+.btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.btn-secondary:hover {
+    background: var(--border-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.btn-secondary:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Animations */
+.summary-card,
+.meal-card,
+.tip-card,
+.profile-item,
+.explanation-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.summary-card.animate,
+.meal-card.animate,
+.tip-card.animate,
+.profile-item.animate,
+.explanation-section.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* New Hover Effects (if not already present or to enhance existing) */
+.user-profile-summary .profile-item:hover,
+.explanation-section:hover,
+.meal-plan-section .meal-card:hover,
+.tips-section .tip-card:hover,
+.summary-section .summary-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .result-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .summary-grid,
+    .meal-grid,
+    .tips-grid,
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card, .meal-card, .tip-card, .profile-item {
+        padding: 1.8rem;
+    }
+
+    .explanation-section {
+        padding: 1.8rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .meal-nutrition {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .profile-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .profile-item {
+        padding: 1.5rem;
+    }
+    
+    .profile-item i {
+        font-size: 2rem;
+    }
+    
+    .profile-item h3 {
+        font-size: 1rem;
+    }
+    
+    .profile-item p {
+        font-size: 1rem;
+    }
+} 

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="landing-container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Your Personal AI Nutrition Coach</h1>
+            <p>Get personalized diet plans and nutrition advice powered by artificial intelligence</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('plan') }}" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='images/hero-image.svg') }}" alt="AI Nutrition Coach">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <h2>Why Choose NutriBot?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI-Powered</h3>
+                <p>Advanced algorithms analyze your needs and create personalized nutrition plans</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Track Progress</h3>
+                <p>Monitor your nutrition goals and see your progress over time</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Meal Planning</h3>
+                <p>Get customized meal plans that fit your lifestyle and preferences</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>24/7 Support</h3>
+                <p>Chat with our AI assistant anytime for nutrition advice and guidance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Tell Us About Yourself</h3>
+                <p>Share your goals, preferences, and dietary restrictions</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Get Your Plan</h3>
+                <p>Receive a personalized nutrition plan tailored to your needs</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Follow & Track</h3>
+                <p>Follow your plan and track your progress with our tools</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Nutrition?</h2>
+        <p>Start your journey to better health today</p>
+        <a href="{{ url_for('plan') }}" class="cta-button">Get Your Plan Now</a>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/landing.js') }}"></script>
+{% endblock %} 

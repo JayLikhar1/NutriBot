@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/plan.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="plan-container">
+    <div class="plan-header">
+        <h1>Create Your Diet Plan</h1>
+        <p>Fill in your details to get a personalized diet plan</p>
+    </div>
+
+    <form id="dietPlanForm" class="plan-form" method="POST" action="{{ url_for('generate_plan') }}">
+        <!-- Personal Information -->
+        <section class="form-section">
+            <h2>Personal Information</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required min="15" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight" required min="30" max="300" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" name="height" required min="100" max="250">
+                </div>
+            </div>
+        </section>
+
+        <!-- Activity Level -->
+        <section class="form-section">
+            <h2>Activity Level</h2>
+            <div class="activity-options">
+                <div class="activity-card">
+                    <input type="radio" id="sedentary" name="activity_level" value="sedentary" required>
+                    <label for="sedentary">
+                        <i class="fas fa-couch"></i>
+                        <h3>Sedentary</h3>
+                        <p>Little or no exercise</p>
+                    </label>
+                </div>
+                <div class="activity-card">
+                    <input type="radio" id="light" name="activity_level" value="light">
+                    <label for="light">
+                        <i class="fas fa-walking"></i>
+                        <h3>Lightly Active</h3>
+                        <p>Light exercise 1-3 days/week</p>
+                    </label>
+                </div>
+                <div class="activity-card">
+                    <input type="radio" id="moderate" name="activity_level" value="moderate">
+                    <label for="moderate">
+                        <i class="fas fa-running"></i>
+                        <h3>Moderately Active</h3>
+                        <p>Moderate exercise 3-5 days/week</p>
+                    </label>
+                </div>
+                <div class="activity-card">
+                    <input type="radio" id="very" name="activity_level" value="very">
+                    <label for="very">
+                        <i class="fas fa-dumbbell"></i>
+                        <h3>Very Active</h3>
+                        <p>Hard exercise 6-7 days/week</p>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals -->
+        <section class="form-section">
+            <h2>Your Goals</h2>
+            <div class="goals-options">
+                <div class="goal-card">
+                    <input type="radio" id="lose" name="goal" value="lose" required>
+                    <label for="lose">
+                        <i class="fas fa-weight"></i>
+                        <h3>Lose Weight</h3>
+                        <p>Reduce body fat and improve health</p>
+                    </label>
+                </div>
+                <div class="goal-card">
+                    <input type="radio" id="maintain" name="goal" value="maintain">
+                    <label for="maintain">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>Maintain Weight</h3>
+                        <p>Stay healthy and fit</p>
+                    </label>
+                </div>
+                <div class="goal-card">
+                    <input type="radio" id="gain" name="goal" value="gain">
+                    <label for="gain">
+                        <i class="fas fa-dumbbell"></i>
+                        <h3>Gain Muscle</h3>
+                        <p>Build muscle and strength</p>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dietary Preferences -->
+        <section class="form-section">
+            <h2>Dietary Preferences</h2>
+            <div class="preferences-grid">
+                <div class="preference-group">
+                    <h3>Diet Type</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet_type" value="vegetarian">
+                            <span>Vegetarian</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet_type" value="vegan">
+                            <span>Vegan</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet_type" value="pescatarian">
+                            <span>Pescatarian</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet_type" value="keto">
+                            <span>Keto</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet_type" value="paleo">
+                            <span>Paleo</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet_type" value="mediterranean">
+                            <span>Mediterranean</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="diet_type" value="indian">
+                            <span>Indian</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="preference-group">
+                    <h3>Allergies & Restrictions</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="restrictions" value="gluten">
+                            <span>Gluten-Free</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="restrictions" value="dairy">
+                            <span>Dairy-Free</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="restrictions" value="nuts">
+                            <span>Nut-Free</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                Generate My Plan <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/plan.js') }}"></script>
+{% endblock %} 

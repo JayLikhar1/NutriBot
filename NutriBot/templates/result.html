@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="result-container">
+    <div class="result-header">
+        <h1>Your Personalized Diet Plan</h1>
+        <p>Based on your goals and preferences</p>
+    </div>
+
+    <div class="result-content">
+        <!-- User Profile Summary -->
+        <section class="user-profile-summary">
+            <h2>Your Profile at a Glance</h2>
+            <div class="profile-grid">
+                <div class="profile-item">
+                    <i class="fas fa-user"></i>
+                    <h3>Age</h3>
+                    <p>{{ plan.user_data.age }} years</p>
+                </div>
+                <div class="profile-item">
+                    <i class="fas fa-venus-mars"></i>
+                    <h3>Gender</h3>
+                    <p>{{ plan.user_data.gender | capitalize }}</p>
+                </div>
+                <div class="profile-item">
+                    <i class="fas fa-weight"></i>
+                    <h3>Weight</h3>
+                    <p>{{ plan.user_data.weight }} kg</p>
+                </div>
+                <div class="profile-item">
+                    <i class="fas fa-ruler-vertical"></i>
+                    <h3>Height</h3>
+                    <p>{{ plan.user_data.height }} cm</p>
+                </div>
+                <div class="profile-item">
+                    <i class="fas fa-running"></i>
+                    <h3>Activity Level</h3>
+                    <p>{{ plan.user_data.activity_level | replace('_', ' ') | capitalize }}</p>
+                </div>
+                <div class="profile-item">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Goal</h3>
+                    <p>{{ plan.user_data.goal | replace('lose', 'Lose Weight') | replace('maintain', 'Maintain Weight') | replace('gain', 'Gain Muscle') }}</p>
+                </div>
+                <div class="profile-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Diet Type</h3>
+                    <p>{% if plan.user_data.diet_type %}{{ plan.user_data.diet_type | join(', ') | capitalize }}{% else %}Not specified{% endif %}</p>
+                </div>
+                <div class="profile-item">
+                    <i class="fas fa-ban"></i>
+                    <h3>Restrictions</h3>
+                    <p>{% if plan.user_data.restrictions %}{{ plan.user_data.restrictions | join(', ') | capitalize }}{% else %}None{% endif %}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="summary-section">
+            <h2>Daily Targets</h2>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Calories</h3>
+                    <p class="value">{{ plan.target_calories }}</p>
+                    <p class="label">kcal/day</p>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <h3>Protein</h3>
+                    <p class="value">{{ plan.macros.protein }}g</p>
+                    <p class="label">per day</p>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-bread-slice"></i>
+                    <h3>Carbs</h3>
+                    <p class="value">{{ plan.macros.carbs }}g</p>
+                    <p class="label">per day</p>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-cheese"></i>
+                    <h3>Fat</h3>
+                    <p class="value">{{ plan.macros.fat }}g</p>
+                    <p class="label">per day</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explanation of Calculations -->
+        <section class="explanation-section">
+            <h2>How Your Plan is Calculated</h2>
+            <div class="explanation-content">
+                <p>Your diet plan is based on scientifically recognized formulas and your personal input:</p>
+                <ul>
+                    <li>
+                        <i class="fas fa-calculator"></i>
+                        <strong>Basal Metabolic Rate (BMR):</strong> This is the number of calories your body needs to perform basic, life-sustaining functions. We use the Mifflin-St Jeor Equation, which considers your age, gender, weight, and height to estimate your BMR.
+                    </li>
+                    <li>
+                        <i class="fas fa-chart-line"></i>
+                        <strong>Total Daily Energy Expenditure (TDEE):</strong> This is your BMR adjusted for your activity level. It represents the total number of calories you burn in a day. We apply a multiplier based on your reported activity level.
+                    </li>
+                    <li>
+                        <i class="fas fa-balance-scale"></i>
+                        <strong>Calorie Target for Goal:</strong> To achieve your goal (lose, maintain, or gain weight), we adjust your TDEE. For weight loss, we aim for a calorie deficit (TDEE - 500 kcal); for muscle gain, a surplus (TDEE + 500 kcal); and for maintenance, it's roughly equal to your TDEE.
+                    </li>
+                    <li>
+                        <i class="fas fa-nutritionix"></i>
+                        <strong>Macronutrient Distribution:</strong> Your daily calorie target is then broken down into ideal ratios of Protein, Carbohydrates, and Fats, optimized for your specific goal. These macros are crucial for energy, muscle repair, and overall body function.
+                    </li>
+                </ul>
+                <p>The meal suggestions are then curated from our extensive database, taking into account your dietary preferences and restrictions, to fit these calculated targets.</p>
+            </div>
+        </section>
+
+        <!-- Meal Plan Section -->
+        <section class="meal-plan-section">
+            <h2>Your Meal Plan</h2>
+            <div class="meal-grid">
+                <!-- Breakfast -->
+                <div class="meal-card">
+                    <h3>Breakfast</h3>
+                    <div class="meal-content">
+                        <p class="meal-time">7:00 - 8:00 AM</p>
+                        {% for meal in plan.meal_plan.breakfast %}
+                        <div class="meal-option">
+                            <h4>{{ meal.name }}</h4>
+                            <div class="meal-nutrition">
+                                <span><i class="fas fa-fire"></i> {{ meal.calories }} kcal</span>
+                                <span><i class="fas fa-drumstick-bite"></i> {{ meal.protein }}g protein</span>
+                                <span><i class="fas fa-bread-slice"></i> {{ meal.carbs }}g carbs</span>
+                                <span><i class="fas fa-cheese"></i> {{ meal.fat }}g fat</span>
+                            </div>
+                            <div class="meal-ingredients">
+                                <h5>Ingredients:</h5>
+                                <ul>
+                                    {% for ingredient in meal.ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Lunch -->
+                <div class="meal-card">
+                    <h3>Lunch</h3>
+                    <div class="meal-content">
+                        <p class="meal-time">12:00 - 1:00 PM</p>
+                        {% for meal in plan.meal_plan.lunch %}
+                        <div class="meal-option">
+                            <h4>{{ meal.name }}</h4>
+                            <div class="meal-nutrition">
+                                <span><i class="fas fa-fire"></i> {{ meal.calories }} kcal</span>
+                                <span><i class="fas fa-drumstick-bite"></i> {{ meal.protein }}g protein</span>
+                                <span><i class="fas fa-bread-slice"></i> {{ meal.carbs }}g carbs</span>
+                                <span><i class="fas fa-cheese"></i> {{ meal.fat }}g fat</span>
+                            </div>
+                            <div class="meal-ingredients">
+                                <h5>Ingredients:</h5>
+                                <ul>
+                                    {% for ingredient in meal.ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Dinner -->
+                <div class="meal-card">
+                    <h3>Dinner</h3>
+                    <div class="meal-content">
+                        <p class="meal-time">6:00 - 7:00 PM</p>
+                        {% for meal in plan.meal_plan.dinner %}
+                        <div class="meal-option">
+                            <h4>{{ meal.name }}</h4>
+                            <div class="meal-nutrition">
+                                <span><i class="fas fa-fire"></i> {{ meal.calories }} kcal</span>
+                                <span><i class="fas fa-drumstick-bite"></i> {{ meal.protein }}g protein</span>
+                                <span><i class="fas fa-bread-slice"></i> {{ meal.carbs }}g carbs</span>
+                                <span><i class="fas fa-cheese"></i> {{ meal.fat }}g fat</span>
+                            </div>
+                            <div class="meal-ingredients">
+                                <h5>Ingredients:</h5>
+                                <ul>
+                                    {% for ingredient in meal.ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Snacks -->
+                <div class="meal-card">
+                    <h3>Snacks</h3>
+                    <div class="meal-content">
+                        <p class="meal-time">Between meals</p>
+                        {% for meal in plan.meal_plan.snacks %}
+                        <div class="meal-option">
+                            <h4>{{ meal.name }}</h4>
+                            <div class="meal-nutrition">
+                                <span><i class="fas fa-fire"></i> {{ meal.calories }} kcal</span>
+                                <span><i class="fas fa-drumstick-bite"></i> {{ meal.protein }}g protein</span>
+                                <span><i class="fas fa-bread-slice"></i> {{ meal.carbs }}g carbs</span>
+                                <span><i class="fas fa-cheese"></i> {{ meal.fat }}g fat</span>
+                            </div>
+                            <div class="meal-ingredients">
+                                <h5>Ingredients:</h5>
+                                <ul>
+                                    {% for ingredient in meal.ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="tips-section">
+            <h2>Health Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <i class="fas fa-glass-water"></i>
+                    <h3>Stay Hydrated</h3>
+                    <p>Drink at least 8 glasses of water daily</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Meal Timing</h3>
+                    <p>Eat every 3-4 hours to maintain energy levels</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-apple-whole"></i>
+                    <h3>Whole Foods</h3>
+                    <p>Focus on whole, unprocessed foods</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Rest Well</h3>
+                    <p>Get 7-8 hours of sleep for optimal results</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button onclick="downloadPDF()" class="btn btn-primary">
+                <i class="fas fa-download"></i> Download Plan
+            </button>
+            <a href="{{ url_for('plan') }}" class="btn btn-secondary">
+                <i class="fas fa-redo"></i> Create New Plan
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/result.js') }}"></script>
+{% endblock %}
+</body>
+</html> 
