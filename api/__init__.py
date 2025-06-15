@@ -1,0 +1,1 @@
+from NutriBot.app import app 

@@ -1,1 +1,1 @@
-web: python -m gunicorn NutriBot.app:app 
+web: gunicorn --workers 4 --bind 0.0.0.0:$PORT NutriBot.app:app 
