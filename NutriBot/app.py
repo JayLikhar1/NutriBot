@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
-from chatbot_logic import calculate_bmr, calculate_tdee, calculate_macros, generate_meal_plan
+from .chatbot_logic import calculate_bmr, calculate_tdee, calculate_macros, generate_meal_plan
 import os
 import json
 
